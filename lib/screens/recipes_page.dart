@@ -50,8 +50,7 @@ class _RecipesPageState extends State<RecipesPage> {
       // itemCount: recipes.length,
        itemBuilder: (context,index){
          return RecipeCard(
-           title: recipes[index].name,
-           image: recipes[index].image,
+           recipeModel: RecipeModel(name: '', image: 'image', description: ''),
          );
        },
      )

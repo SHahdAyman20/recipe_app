@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/models/recipe_model.dart';
 
 class RecipeDescription extends StatelessWidget {
-  const RecipeDescription({Key? key}) : super(key: key);
+   RecipeDescription({Key? key, required this.recipeModel}) : super(key: key);
 
+RecipeModel recipeModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +32,10 @@ class RecipeDescription extends StatelessWidget {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.4,
                   width: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        'https://hips.hearstapps.com/hmg-prod/images/comfort-food-recipes-64668a179574d.png',
+                        recipeModel.image,
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -56,22 +58,22 @@ class RecipeDescription extends StatelessWidget {
                       topRight: Radius.circular(40),
                     ),
                   ),
-                  child: const Column(
+                  child:  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
+                       Center(
                         child: Text(
-                          'Recipe Description \n',
+                          '${recipeModel.name} Description \n',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style:const TextStyle(
                             color: Colors.white,
-                            fontSize: 25,
+                            fontSize: 23,
                             fontWeight: FontWeight.w800,
                           ),
                         ),
                       ),
                       Text(
-                        'dddddddddddddddddd',
+                        recipeModel.description,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Colors.white,

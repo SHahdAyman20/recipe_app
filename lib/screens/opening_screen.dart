@@ -7,8 +7,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
-
     return Scaffold(
       backgroundColor:const Color(0xffFE724C),
       body:
