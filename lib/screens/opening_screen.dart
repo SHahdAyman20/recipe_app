@@ -10,10 +10,8 @@ class HomePage extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
 
-
-
     return Scaffold(
-      backgroundColor: Color(0xffFE724C),
+      backgroundColor:const Color(0xffFE724C),
       body:
           Column(
             children: [
