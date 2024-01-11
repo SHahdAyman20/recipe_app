@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/models/recipe_model.dart';
+import 'package:recipe_app/json_data/recipeModel.dart';
 
 class RecipeDescription extends StatelessWidget {
-   RecipeDescription({Key? key, required this.recipeModel}) : super(key: key);
 
-RecipeModel recipeModel;
+  RecipeDetails recipeDetails ;
+
+  RecipeDescription({Key? key, required this.recipeDetails}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,7 @@ RecipeModel recipeModel;
             color: Colors.black, // <-- SEE HERE
           ),
           title: const Text(
-            'Recipes Description',
+            'Recipes Details',
             style: TextStyle(
               fontSize: 22,
               color: Colors.black,
@@ -35,7 +37,7 @@ RecipeModel recipeModel;
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        recipeModel.image,
+                        '${recipeDetails.image}',
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -63,7 +65,7 @@ RecipeModel recipeModel;
                     children: [
                        Center(
                         child: Text(
-                          '${recipeModel.name} Description \n',
+                          '${recipeDetails.title} Description \n',
                           textAlign: TextAlign.center,
                           style:const TextStyle(
                             color: Colors.white,
@@ -73,12 +75,21 @@ RecipeModel recipeModel;
                         ),
                       ),
                       Text(
-                        recipeModel.description,
+                        '${recipeDetails.ingredients}',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style:const TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                          // fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        '${recipeDetails.instructions}',
+                        textAlign: TextAlign.left,
+                        style:const TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          // fontWeight: FontWeight.w800,
                         ),
                       ),
                     ],

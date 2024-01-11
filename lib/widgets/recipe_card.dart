@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/models/recipe_model.dart';
+import 'package:recipe_app/json_data/recipeModel.dart';
 import 'package:recipe_app/screens/recipe_description.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({
     super.key,
-    required this.recipeModel,
+    required this.recipeDetails,
   });
 
-  final RecipeModel recipeModel;
+  final RecipeDetails recipeDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,16 @@ class RecipeCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
+        print('---------------->${recipeDetails.ingredients!.s1}');
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => RecipeDescription(
-              recipeModel: RecipeModel(
-                name: recipeModel.name,
-                image: recipeModel.image,
-                description: recipeModel.description,
+              recipeDetails: RecipeDetails(
+                id: recipeDetails.id,
+                title: recipeDetails.title,
+                image: recipeDetails.image,
+                ingredients:recipeDetails.ingredients,
+                instructions: recipeDetails.instructions,
               ),
             ),
           ),
@@ -34,14 +37,14 @@ class RecipeCard extends StatelessWidget {
         width: screenWidth,
         height: screenHeight * .25,
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.grey[800],
           borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
             colorFilter: ColorFilter.mode(
               Colors.black.withOpacity(0.35),
               BlendMode.multiply,
             ),
-            image: NetworkImage(recipeModel.image),
+            image: NetworkImage('${recipeDetails.image}'),
             fit: BoxFit.cover,
           ),
         ),
@@ -52,7 +55,7 @@ class RecipeCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Text(
-                  recipeModel.name,
+                  '${recipeDetails.title}',
                   style: const TextStyle(fontSize: 20, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,

@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute (
-                        builder: (BuildContext context) => const RecipesPage(),
+                        builder: (BuildContext context) => const RecipesPage(recipeName: 'meat',),
                       ),
                     );
                   },

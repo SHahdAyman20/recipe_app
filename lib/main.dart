@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/screens/opening_screen.dart';
-import 'package:recipe_app/screens/recipe_description.dart';
-import 'package:recipe_app/screens/recipes_page.dart';
+import 'package:recipe_app/service/recipe.api.dart';
 
 void main() {
+  RecipeApi().getRecipe(recipeName: 'meat');
   runApp(const RecipeApp());
 }
 
