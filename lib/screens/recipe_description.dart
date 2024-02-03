@@ -1,104 +1,91 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/json_data/recipeModel.dart';
-
+import 'package:recipe_app/model/recipe_model.dart';
 class RecipeDescription extends StatelessWidget {
 
-  RecipeDetails recipeDetails ;
-
+  RecipeDetails recipeDetails;
   RecipeDescription({Key? key, required this.recipeDetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          leading: const BackButton(
-            color: Colors.black, // <-- SEE HERE
-          ),
-          title: const Text(
-            'Recipes Details',
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.black,
-              fontWeight: FontWeight.w700,
+      body: ListView(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  'https:${recipeDetails.image}',
+                ),
+                fit: BoxFit.contain,
+              ),
             ),
           ),
-          backgroundColor: const Color(0xffFE724C),
-        ),
-        body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        '${recipeDetails.image}',
+          Container(
+              padding: const EdgeInsets.all(20),
+              width: double.infinity,
+             height: MediaQuery.of(context).size.height * 0.7,
+              decoration: const BoxDecoration(
+                color: Colors.red,
+
+              ),
+              child: ListView(
+                children: [
+                  // recipe Description
+                  Center(
+                    child: Text(
+                      '${recipeDetails.title} Description \n',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w800,
                       ),
-                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  padding:const EdgeInsets.all(10),
-                  margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.35,
-                  ),
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.7,
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
+                  // recipe ingredients
+                  if (recipeDetails.ingredients != null)
+                    ...recipeDetails.ingredients!.toJson().entries.map((entry) {
+                      if (entry.value != null) {
+                        return Column(
+                          children: [
+                            Text(
+                              '${entry.value}',
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                            const Divider(
+                              // Add a horizontal line using Divider widget
+                              color: Colors.black,
+                              thickness: 1,
+                              height: 20,
+                            ),
+                          ],
+                        );
+                      } else {
+                        return const SizedBox(); // Return an empty SizedBox if the ingredient is null
+                      }
+                    }).toList(),
+                  // recipe instructions
+                  Text(
+                    '${recipeDetails.instructions}',
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      // fontWeight: FontWeight.w800,
                     ),
                   ),
-                  child:  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                       Center(
-                        child: Text(
-                          '${recipeDetails.title} Description \n',
-                          textAlign: TextAlign.center,
-                          style:const TextStyle(
-                            color: Colors.white,
-                            fontSize: 23,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        '${recipeDetails.ingredients}',
-                        textAlign: TextAlign.left,
-                        style:const TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                         // fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      Text(
-                        '${recipeDetails.instructions}',
-                        textAlign: TextAlign.left,
-                        style:const TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          // fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
-        );
+            ),
+        ],
+      ),
+    );
   }
 }

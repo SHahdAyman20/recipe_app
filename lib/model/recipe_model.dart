@@ -39,7 +39,7 @@ class RecipeDetails {
   String? instructions;
   String? image;
 
-  RecipeDetails({this.id, this.title, this.ingredients, this.instructions, this.image});
+  RecipeDetails({this.id, required this.title,required this.ingredients,required this.instructions,required this.image});
 
   RecipeDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -123,6 +123,31 @@ class Ingredients {
     s16 = json['16'];
     s17 = json['17'];
     s18 = json['18'];
+  }
+
+  int get length {
+    // Calculate the length based on the non-null properties
+    int count = 0;
+    if (s1 != null) count++;
+    if (s2 != null) count++;
+    if (s3 != null) count++;
+    if (s4 != null) count++;
+    if (s5 != null) count++;
+    if (s6 != null) count++;
+    if (s7 != null) count++;
+    if (s8 != null) count++;
+    if (s9 != null) count++;
+    if (s10 != null) count++;
+    if (s11 != null) count++;
+    if (s12 != null) count++;
+    if (s13 != null) count++;
+    if (s14 != null) count++;
+    if (s15 != null) count++;
+    if (s16 != null) count++;
+    if (s17 != null) count++;
+    if (s18 != null) count++;
+
+    return count;
   }
 
   Map<String, dynamic> toJson() {

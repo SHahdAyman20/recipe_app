@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:recipe_app/json_data/recipeModel.dart';
+import 'package:recipe_app/model/recipe_model.dart';
 
 //this class will provide the food recipe which i will get from internet
 class RecipeApi {

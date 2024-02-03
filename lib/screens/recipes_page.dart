@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/json_data/recipeModel.dart';
+import 'package:recipe_app/model/recipe_model.dart';
 import 'package:recipe_app/service/recipe.api.dart';
 import 'package:recipe_app/widgets/recipe_card.dart';
 
@@ -70,7 +70,9 @@ class _RecipesPageState extends State<RecipesPage> {
           return RecipeCard(
             recipeDetails: RecipeDetails(
               title: recipee.title,
-              image: recipee.image
+              image: recipee.image,
+              ingredients: recipee.ingredients,
+              instructions: recipee.instructions
             ),
           );
        },
