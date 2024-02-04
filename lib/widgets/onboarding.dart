@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:recipe_app/const/static.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

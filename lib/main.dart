@@ -16,7 +16,7 @@ class RecipeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  ResponsiveSizer(
       builder: (context, orientation, screenType) {
-        return MaterialApp(
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: OnBoardingScreen(),
         );
