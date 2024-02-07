@@ -41,7 +41,7 @@ class RecipeCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.35),
+              Colors.black.withOpacity(0.45),
               BlendMode.multiply,
             ),
             image: NetworkImage('${recipeDetails.image}'),
@@ -56,7 +56,7 @@ class RecipeCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Text(
                   '${recipeDetails.title}',
-                  style: const TextStyle(fontSize: 20, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, color: Colors.white,fontWeight:  FontWeight.w600),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   textAlign: TextAlign.center,
